@@ -1,0 +1,19 @@
+name = Chemistry of Art
+description = Custom theme by Jeffrey Xiong
+core = 7.x
+engine = phptemplate
+
+stylesheets[all][] = css/styles.css
+stylesheets[all][] = css/reset.css
+
+scripts[] = js/script.js
+
+regions[header] = Header
+regions[sidebar_first] = Left Sidebar
+regions[sidebar_second] = Right Sidebar
+regions[highlighted] = Highlighted
+regions[content] = Content
+regions[footer] = Footer
+
+features[] = logo
+features[] = favicon

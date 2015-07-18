@@ -1,0 +1,29 @@
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+/** Fonts **/
+
+@font-face{
+	font-family: Open Sans R;
+	src: url('../fonts/OpenSans-Regular.ttf');
+}
+@font-face{
+	font-family: Open Sans SB;
+	src: url('../fonts/OpenSans-Semibold.ttf');
+}
+@font-face{
+	font-family: Montserrat R;
+	src: url('../fonts/Montserrat-Regular.otf');
+}
+@font-face{
+	font-family: Montserrat L;
+	src: url('../fonts/Montserrat-Light.otf');
+}
+
