@@ -23,13 +23,15 @@ $(document).ready(function(){
     });
 
     // welcome animation 
-    $('#welcome').animate({'opacity': '1'}, {duration: 1000})
+    $('#welcome').animate({'opacity': '1'}, {duration: 2000});
+    $('#welcome-cover').animate({'opacity': '1'}, {duration: 2000});
     $('#explore').click(function() {
-        $('#welcome').animate({'opacity':'0'});
-        $('#welcome-cover').animate({'opacity':'0'});
-        $('#welcome-cover').hide();
-        $('#welcome').hide();
-        $('#main-title').css({'top':'365px'});
+        $('#main-title').animate({'opacity': '1'}, {duration: 1000});
+        $('#welcome').animate({'opacity':'0'}, {duration: 1000});
+        $('#welcome-cover').animate({'opacity':'0'}, {duration: 1000});
+        $('#welcome-cover').hide(1000);
+        $('#welcome').hide(1000);
+        
     });
 
     // svg lines
@@ -80,7 +82,9 @@ $(document).ready(function(){
         line7 = snap.paper.line(dye_offset.left + 120, dye_offset.top + 28, ink_offset.left + 57, ink_offset.top + 162).attr({stroke:'#555555', strokeWidth:2});
         line8 = snap.paper.line(ink_offset.left + 170, ink_offset.top + 99, end_height, 180).attr({stroke:'#555555', strokeWidth:2});
     });
-
+    
+    // hexagon shrink
+    
 });
 
 -->

@@ -1,5 +1,5 @@
 /***********************
- ****	Front.css	****
+ ****	 DEFAULT	****
  ***********************/
 
  body, html {
@@ -34,7 +34,7 @@ a {
 
 
 /***********************
- ****	Front.css	****
+ ****	  MAIN  	****
  ***********************/
 
 /* Useful Classes */
@@ -166,6 +166,7 @@ a {
 	top: 0px;
 	left: 0px;
 	z-index: -1;
+	opacity: 0;
 }
 #welcome-text{
 	text-align: center;
@@ -175,13 +176,19 @@ a {
 	width: 300px;
 	position: relative;
 	top: 200px;
+	opacity: 1;
 }
 	#main-title{
 		width: 300px;
 		margin: 0 auto;
 		text-align: center;
-		position: relative;
-		bottom: 155px;
+		position:absolute;
+	    left:0;
+	    right:0;
+	    margin-left:auto;
+	    margin-right:auto;
+		top: 447px;
+		opacity: 0;
 	}
 #welcome:before{
 	content: '';
