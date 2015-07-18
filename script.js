@@ -29,6 +29,7 @@ $(document).ready(function(){
         $('#welcome-cover').animate({'opacity':'0'});
         $('#welcome-cover').hide();
         $('#welcome').hide();
+        $('#main-title').css({'top':'365px'});
     });
 
     // svg lines

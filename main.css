@@ -176,6 +176,13 @@ a {
 	position: relative;
 	top: 200px;
 }
+	#main-title{
+		width: 300px;
+		margin: 0 auto;
+		text-align: center;
+		position: relative;
+		bottom: 155px;
+	}
 #welcome:before{
 	content: '';
 	display: inline-block;
