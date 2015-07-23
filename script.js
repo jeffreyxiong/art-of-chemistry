@@ -3,87 +3,149 @@
 
 $(document).ready(function(){
 
-    // menu animation
-    var click = 0;
-    $('#expand').click(function() {
-        if (click == 0) {
-            $('#menu-cover').first().show('slow');
-            $('#menu').show()
-            $('#menu').animate({'opacity': '1'})
+    /// menu animation
+        $('#expand').click(function(){
+            $('#menu').toggleClass('expanded');
+
+        });
+        $('#hide').click(function(){
+            $('#menu').toggleClass('expanded');
+        })
+
+        /// welcome animation 
+        $('#welcome').animate({'opacity': '1'}, {duration: 1500});
+        $('#welcome-cover').animate({'opacity': '1'}, {duration: 1500});
+        $('#explore').click(function() {
+            $('#main-title').animate({'opacity': '1'}, {duration: 1000});
+            $('#welcome').animate({'opacity':'0'}, {duration: 1000});
+            $('#welcome-cover').animate({'opacity':'0'}, {duration: 1000});
+            $('#welcome-cover').hide(1000);
+            $('#welcome').hide(1000);
             
-            click = 1;
-        }
-        else {
-            $('#menu-cover').hide('slow');
-            $('#menu').hide()
-            $('#menu').animate({'opacity': '0'})
-            
-            click = 0;
-        }
-    });
+        });
 
-    // welcome animation 
-    $('#welcome').animate({'opacity': '1'}, {duration: 2000});
-    $('#welcome-cover').animate({'opacity': '1'}, {duration: 2000});
-    $('#explore').click(function() {
-        $('#main-title').animate({'opacity': '1'}, {duration: 1000});
-        $('#welcome').animate({'opacity':'0'}, {duration: 1000});
-        $('#welcome-cover').animate({'opacity':'0'}, {duration: 1000});
-        $('#welcome-cover').hide(1000);
-        $('#welcome').hide(1000);
-        
-    });
-
-    // svg lines
-
-    var gem_offset = $('#gem > .topic').offset();
-    var stone_offset = $('#stone > .topic').offset();
-    var metal_offset = $('#metal > .topic').offset();
-    var photo_offset = $('#photo > .topic').offset();
-    var pigment_offset = $('#pigment > .topic').offset(); 
-    var dye_offset = $('#dye > .topic').offset();
-    var ink_offset = $('#ink > .topic').offset();
-    var end_height = $(window).width();
-
-
+    /// svg artboard
     var snap = Snap('#svg-bg');
-    var line1 = snap.paper.line(0, 100, stone_offset.left + 49, stone_offset.top + 36).attr({stroke:'#555555', strokeWidth:2});
-    var line2 = snap.paper.line(gem_offset.left + 113, gem_offset.top + 23, stone_offset.left + 60, stone_offset.top + 163).attr({stroke:'#555555', strokeWidth:2});
-    var line3 = snap.paper.line(stone_offset.left + 165, stone_offset.top + 88, metal_offset.left + 8, metal_offset.top + 112).attr({stroke:'#555555', strokeWidth:2});
-    var line4 = snap.paper.line(metal_offset.left + 135, metal_offset.top + 122, photo_offset.left + 83, photo_offset.top + 9).attr({stroke:'#555555', strokeWidth:2});
-    var line5 = snap.paper.line(photo_offset.left + 144, photo_offset.top + 55, pigment_offset.left + 51, pigment_offset.top + 156).attr({stroke:'#555555', strokeWidth:2});
-    var line6 = snap.paper.line(pigment_offset.left + 125, pigment_offset.top + 170, dye_offset.left + 48, dye_offset.top + 36).attr({stroke:'#555555', strokeWidth:2});
-    var line7 = snap.paper.line(dye_offset.left + 120, dye_offset.top + 28, ink_offset.left + 57, ink_offset.top + 162).attr({stroke:'#555555', strokeWidth:2});
-    var line8 = snap.paper.line(ink_offset.left + 170, ink_offset.top + 99, end_height, 180).attr({stroke:'#555555', strokeWidth:2});
-    $(window).resize(function(){
 
-        gem_offset = $('#gem > .topic').offset();
-        stone_offset = $('#stone > .topic').offset();
-        metal_offset = $('#metal > .topic').offset();
-        photo_offset = $('#photo > .topic').offset();
-        pigment_offset = $('#pigment > .topic').offset();   
-        dye_offset = $('#dye > .topic').offset();
-        ink_offset = $('#ink > .topic').offset();
-        end_height = $(window).width();
-        line1.remove();
-        line2.remove();
-        line3.remove();
-        line4.remove();
-        line5.remove();
-        line6.remove();
-        line7.remove();
-        line8.remove();
-        line1 = snap.paper.line(0, 100, stone_offset.left + 49, stone_offset.top + 36).attr({stroke:'#555555', strokeWidth:2});
-        line2 = snap.paper.line(gem_offset.left + 113, gem_offset.top + 23, stone_offset.left + 60, stone_offset.top + 163).attr({stroke:'#555555', strokeWidth:2});
-        line3 = snap.paper.line(stone_offset.left + 165, stone_offset.top + 88, metal_offset.left + 8, metal_offset.top + 112).attr({stroke:'#555555', strokeWidth:2});
-        line4 = snap.paper.line(metal_offset.left + 135, metal_offset.top + 122, photo_offset.left + 83, photo_offset.top + 9).attr({stroke:'#555555', strokeWidth:2});
-        line5 = snap.paper.line(photo_offset.left + 144, photo_offset.top + 55, pigment_offset.left + 51, pigment_offset.top + 156).attr({stroke:'#555555', strokeWidth:2});
-        line6 = snap.paper.line(pigment_offset.left + 125, pigment_offset.top + 170, dye_offset.left + 48, dye_offset.top + 36).attr({stroke:'#555555', strokeWidth:2});
-        line7 = snap.paper.line(dye_offset.left + 120, dye_offset.top + 28, ink_offset.left + 57, ink_offset.top + 162).attr({stroke:'#555555', strokeWidth:2});
-        line8 = snap.paper.line(ink_offset.left + 170, ink_offset.top + 99, end_height, 180).attr({stroke:'#555555', strokeWidth:2});
-    });
-    
-    // hexagon shrink
+        //---- HEXAGON CLASS
+        function Hexagon(x, y, side) {
+
+            var c = Math.PI / 180,
+                sin45 = Math.sin(45 * c) * side,
+                sin15 = Math.sin(15 * c) * side,
+                cos15 = Math.cos(15 * c) * side;
+
+            this.x1 = x;
+            this.y1 = y;
+
+            this.x2 = x + sin45;
+            this.y2 = y + sin45;
+
+            this.x3 = this.x2 + cos15;
+            this.y3 = this.y2 - sin15;
+
+            this.x4 = this.x3 + sin15;
+            this.y4 = this.y3 - cos15;
+
+            this.x5 = this.x4 - sin45;
+            this.y5 = this.y4 - sin45;
+
+            this.x6 = x + sin15;
+            this.y6 = y - cos15;
+
+            this.points = [this.x1, this.y1, this.x2, this.y2, this.x3, this.y3, this.x4, this.y4, this.x5, this.y5, this.x6, this.y6];
+        };
+        Hexagon.prototype.draw = function(color, width, name) {
+            //
+            return snap.paper.polygon(this.points).attr({
+                        stroke:color, 
+                        strokeWidth:width,
+                        fillOpacity:0,
+                        id:name
+                    });
+        };
+        Hexagon.prototype.getCornerX = function(point) {
+            switch(point) {
+                case 0:
+                    return this.points[0];
+                    break;
+                case 1:
+                    return this.points[2];
+                    break;
+                case 2:
+                    return this.points[4];
+                    break;
+                case 3:
+                    return this.points[6];
+                    break;
+                case 4:
+                    return this.points[8];
+                    break;
+                case 5:
+                    return this.points[10];
+                    break;
+            };
+        };
+        Hexagon.prototype.getCornerY = function(point) {
+            switch(point) {
+                case 0:
+                    return this.points[1];
+                    break;
+                case 1:
+                    return this.points[3];
+                    break;
+                case 2:
+                    return this.points[5];
+                    break;
+                case 3:
+                    return this.points[7];
+                    break;
+                case 4:
+                    return this.points[9];
+                    break;
+                case 5:
+                    return this.points[11];
+                    break;
+            };
+        };
+
+        //---- LINE CLASS
+        function Line(x1, y1, x2, y2) {
+            this.x1 = x1;
+            this.x2 = x2;
+            this.y1 = y1;
+            this.y2 = y2;
+        }
+        Line.prototype.draw = function(color, width) {
+            //
+            return snap.paper.line(this.x1, this.y1, this.x2, this.y2).attr({stroke:color, strokeWidth:width});
+        }
+
+    // drawing
+    var hex1 = new Hexagon(45, 470, 90),
+        hex2 = new Hexagon(120, 205, 90),
+        hex3 = new Hexagon(380, 135, 90),
+        hex4 = new Hexagon(420, 285.5, 90),
+        hex5 = new Hexagon(309.5, 395.5, 90),
+        hex6 = new Hexagon(570.5, 326, 90),
+        hex7 = new Hexagon(721, 367, 90),
+        hex8 = new Hexagon(831, 257, 90),
+        hex9 = new Hexagon(761, 517.5, 90);
+
+        hex1.draw('#555555', 2, 'hex1');
+        hex2.draw('#555555', 2, 'hex2');
+        hex3.draw('#555555', 2, 'hex3');
+        hex4.draw('#555555', 2, 'hex4');
+        hex5.draw('#555555', 2, 'hex5');
+        hex6.draw('#555555', 2, 'hex6');
+        hex7.draw('#555555', 2, 'hex7');
+        hex8.draw('#555555', 2, 'hex8');
+        hex9.draw('#555555', 2, 'hex9');
+
+    var line1 = snap.paper.line(hex1.getCornerX(4), hex1.getCornerY(4), hex2.getCornerX(1), hex2.getCornerY(1)).attr({stroke:'#555555', strokeWidth:2}),
+        line2 = snap.paper.line(hex2.getCornerX(3), hex2.getCornerY(3), hex3.getCornerX(0), hex3.getCornerY(0)).attr({stroke:'#555555', strokeWidth:2});
+
+
     
 });
 

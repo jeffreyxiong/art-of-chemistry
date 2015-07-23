@@ -34,7 +34,7 @@ a {
 
 
 /***********************
- ****	  MAIN  	****
+ ****	Front.css	****
  ***********************/
 
 /* Useful Classes */
@@ -83,6 +83,8 @@ a {
 	z-index: -10;
 }
 #svg-bg{
+	width: 90%;
+	margin-left: 5%;
 	opacity: 0.5;
 }
 /* Header */
@@ -107,17 +109,22 @@ a {
 }
 
 /* Menu */
+
 #menu{
-	position: relative;
-	width: 150px;
+	position: absolute;
+	width: 300px;
 	height: 100%;
-	float: right;
-	margin-right: -3.3%;
-	transition: 1s;
-	display: none;
-	opacity: 0;
-	clear: left;
-	/*bottom: 30px;*/
+	top: 0px;
+	right: 0px;
+	background-color: #688fa9;
+	z-index: 1001;
+	-webkit-transform: translate3d(300px,0,0);
+	transform: translate3d(300px,0,0);
+	-webkit-transition: -webkit-transform 0.4s;
+	transition: transform 0.8s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	
 }
 #menu ul {
 	text-align: right;
@@ -147,13 +154,23 @@ a {
 	font-size: 14px;
 }
 
+	/* menu toggle */
+	.expanded{
+		-webkit-transform: translate3d(0,0,0) !important;
+		transform: translate3d(0,0,0) !important;
+		-webkit-transition: -webkit-transform 0.8s !important;
+		transition: transform 0.8s !important;
+		-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1) !important;
+		transition-timing-function: cubic-bezier(0.7,0,0.3,1) !important;
+	}
+
 /* Main */
 #welcome{
 	width: 100%;
 	height: 500px;
 	position: relative;
 	margin: 0 auto;
-	margin-top: 20px;
+	margin-top: 50px;
 	text-align: center;
 	opacity: 0;
 
@@ -161,7 +178,7 @@ a {
 #welcome-cover{
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: rgba(255, 255, 255, 0.8);
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -187,7 +204,7 @@ a {
 	    right:0;
 	    margin-left:auto;
 	    margin-right:auto;
-		top: 447px;
+		top: 477px;
 		opacity: 0;
 	}
 #welcome:before{
@@ -245,73 +262,16 @@ a {
 	z-index: -3;
 	padding: 10px 5px;
 	/*width: 150px;*/
-	border-top: 2px solid #555555;
-	border-bottom: 2px solid #555555;
 	opacity: 0.4;
 	text-transform: uppercase;
 	font-size: 12px;
 	color: #555555;
 }
-	
-	/* molecule */
-	#gem{
-		top: 350px;
-		right: 80px;
-	}
-		#gem svg{
-			transform: rotate(20deg);
-		}
-	#stone{
-		right: 110px;
-		top: 45px;
-	}
-		#stone svg{
-			transform: rotate(24deg);
-		}
-	#metal{
-		bottom: 50px;
-		right: 10px;
-	}
-		#metal svg{
-			transform: rotate(5deg);
-		}
-	#photo{
-		left: 10px;
-		top: 155px;
-	}
-		#photo svg{
-			transform: rotate(7deg);
-		}
-	#pigment{
-		left: 60px;
-		top: 30px;
-	}
-		#pigment svg{
-			transform: rotate(40deg);
-		}
-	#dye{
-		top: 250px;
-		left: 70px;
-	}
-		#dye svg{
-			transform: rotate(24deg);
-		}
-	#ink{
-		left: 80px;
-	}
-		#ink svg{
-			transform: rotate(30deg);
-		}
-/*#stone, #dye, #photo{
-	top: 82.5px;
-}*/
 
-.hex-wrap:hover .topic, .hex-wrap:hover .topictitle, .hex-wrap:hover .hex-image{
-	opacity: 1;
-}
-/*#gem:hover svg{
-	transform: rotate(20deg) scale(1.25) !important;
-}*/
+
+
+
+
 
 
 
